@@ -10,8 +10,12 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     
     steps:
@@ -33,15 +37,24 @@ jobs:
     - name: 🔨 Build Web App
       run: flutter build web --release --base-href "/pet_addoption/"
       
-    - name: 🚀 Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
-      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    - name: � Upload Pages Artifact
+      uses: actions/upload-pages-artifact@v3
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build/web
-        force_orphan: true
-        
+        path: ./build/web
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+    - name: 🚀 Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
+      
     - name: 📊 Deployment Summary
       run: |
         echo "🎉 Pet Adoption App deployed successfully!"
-        echo "🌐 Live URL: https://${{ github.repository_owner }}.github.io/pet_addoption/"
+        echo "🌐 Live URL: ${{ steps.deployment.outputs.page_url }}"
