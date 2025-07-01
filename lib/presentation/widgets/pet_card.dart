@@ -35,86 +35,86 @@ class PetCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(AppConstants.borderRadius),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
-                Stack(
-                  children: [
-                    Hero(
-                      tag: 'pet-${pet.id}',
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.vertical(
-                          top: Radius.circular(AppConstants.borderRadius),
-                        ),
-                        child: AspectRatio(
-                          aspectRatio: isInGrid ? 18 / 9 : 16 / 9,
-                          child: CachedNetworkImage(
-                            imageUrl: pet.imageUrl,
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                            placeholder:
-                                (context, url) => Container(
-                                  color: Colors.grey[300],
-                                  child: const Center(
-                                    child: CircularProgressIndicator(),
-                                  ),
+                Flexible(
+                  child: Stack(
+                    children: [
+                      Hero(
+                        tag: 'pet-${pet.id}',
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.vertical(
+                            top: Radius.circular(AppConstants.borderRadius),
+                          ),
+                          child: AspectRatio(
+                            aspectRatio: isInGrid ? 18 / 9 : 16 / 9,
+                            child: CachedNetworkImage(
+                              imageUrl: pet.imageUrl,
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                              placeholder: (context, url) => Container(
+                                color: Colors.grey[300],
+                                child: const Center(
+                                  child: CircularProgressIndicator(),
                                 ),
-                            errorWidget:
-                                (context, url, error) => Container(
-                                  color: Colors.grey[300],
-                                  child: const Icon(
-                                    Icons.pets,
-                                    size: 50,
-                                    color: Colors.grey,
-                                  ),
+                              ),
+                              errorWidget: (context, url, error) => Container(
+                                color: Colors.grey[300],
+                                child: const Icon(
+                                  Icons.pets,
+                                  size: 50,
+                                  color: Colors.grey,
                                 ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      top: 8,
-                      right: 8,
-                      child: CircleAvatar(
-                        backgroundColor: Colors.white.withOpacity(0.9),
-                        radius: 20,
-                        child: IconButton(
-                          icon: Icon(
-                            pet.isFavorite
-                                ? Icons.favorite
-                                : Icons.favorite_border,
-                            color:
-                                pet.isFavorite
-                                    ? AppColors.favorite
-                                    : Colors.grey,
-                            size: 20,
-                          ),
-                          onPressed: onFavoriteTap,
-                        ),
-                      ),
-                    ),
-                    if (pet.isAdopted)
-                      Positioned(
-                        top: 8,
-                        left: 8,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 8,
-                            vertical: 4,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColors.adopted,
-                            borderRadius: BorderRadius.circular(16),
-                          ),
-                          child: const Text(
-                            'ADOPTED',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                  ],
+                      Positioned(
+                        top: 8,
+                        right: 8,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.white.withOpacity(0.9),
+                          radius: 20,
+                          child: IconButton(
+                            icon: Icon(
+                              pet.isFavorite
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                              color: pet.isFavorite
+                                  ? AppColors.favorite
+                                  : Colors.grey,
+                              size: 20,
+                            ),
+                            onPressed: onFavoriteTap,
+                          ),
+                        ),
+                      ),
+                      if (pet.isAdopted)
+                        Positioned(
+                          top: 8,
+                          left: 8,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 8,
+                              vertical: 4,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppColors.adopted,
+                              borderRadius: BorderRadius.circular(16),
+                            ),
+                            child: const Text(
+                              'ADOPTED',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
                 ),
                 Padding(
                   padding: EdgeInsets.all(
@@ -132,15 +132,12 @@ class PetCard extends StatelessWidget {
                               style: (isInGrid
                                       ? Theme.of(context).textTheme.titleMedium
                                       : Theme.of(
-                                        context,
-                                      ).textTheme.headlineSmall)
+                                          context,
+                                        ).textTheme.headlineSmall)
                                   ?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color:
-                                        pet.isAdopted
-                                            ? AppColors.adopted
-                                            : null,
-                                  ),
+                                fontWeight: FontWeight.bold,
+                                color: pet.isAdopted ? AppColors.adopted : null,
+                              ),
                               overflow: TextOverflow.ellipsis,
                             ),
                           ),
@@ -149,9 +146,9 @@ class PetCard extends StatelessWidget {
                             style: Theme.of(
                               context,
                             ).textTheme.titleLarge?.copyWith(
-                              color: AppColors.primary,
-                              fontWeight: FontWeight.bold,
-                            ),
+                                  color: AppColors.primary,
+                                  fontWeight: FontWeight.bold,
+                                ),
                           ),
                         ],
                       ),
@@ -159,8 +156,8 @@ class PetCard extends StatelessWidget {
                       Text(
                         pet.breed,
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color: pet.isAdopted ? AppColors.adopted : null,
-                        ),
+                              color: pet.isAdopted ? AppColors.adopted : null,
+                            ),
                       ),
                       SizedBox(height: isInGrid ? 4 : 8),
                       Row(
@@ -173,10 +170,9 @@ class PetCard extends StatelessWidget {
                           ),
                           const SizedBox(width: 8),
                           _InfoChip(
-                            icon:
-                                pet.gender == 'Male'
-                                    ? Icons.male
-                                    : Icons.female,
+                            icon: pet.gender == 'Male'
+                                ? Icons.male
+                                : Icons.female,
                             label: pet.gender,
                             isAdopted: pet.isAdopted,
                           ),
@@ -231,10 +227,9 @@ class _InfoChip extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color:
-            isAdopted
-                ? AppColors.adopted.withOpacity(0.1)
-                : AppColors.primary.withOpacity(0.1),
+        color: isAdopted
+            ? AppColors.adopted.withOpacity(0.1)
+            : AppColors.primary.withOpacity(0.1),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
