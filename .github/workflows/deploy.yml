@@ -1,0 +1,42 @@
+name: Deploy Pet Adoption App to GitHub Pages
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout Repository
+      uses: actions/checkout@v4
+      
+    - name: 🐦 Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.19.0'
+        channel: 'stable'
+        
+    - name: 📦 Install Dependencies
+      run: flutter pub get
+      
+    - name: 🧪 Run Tests
+      run: flutter test
+      
+    - name: 🔨 Build Web App
+      run: flutter build web --release --base-href "/pet-adoption-app/"
+      
+    - name: 🚀 Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build/web
+        cname: # Add your custom domain here if you have one
+        
+    - name: 📊 Deployment Summary
+      run: |
+        echo "🎉 Pet Adoption App deployed successfully!"
+        echo "🌐 Live URL: https://${{ github.repository_owner }}.github.io/pet-adoption-app/"

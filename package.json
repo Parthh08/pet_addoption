@@ -1,0 +1,16 @@
+{
+  "name": "pet-adoption-app",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "flutter build web --release",
+    "serve": "flutter build web --release && cd build/web && python -m http.server 8080",
+    "deploy:netlify": "netlify deploy --prod --dir=build/web",
+    "deploy:firebase": "firebase deploy",
+    "deploy:vercel": "vercel --prod build/web"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.0.0",
+    "firebase-tools": "^13.0.0",
+    "vercel": "^32.0.0"
+  }
+}

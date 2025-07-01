@@ -1,0 +1,26 @@
+# Netlify Configuration for Pet Adoption App
+
+[build]
+  command = "flutter build web --release"
+  publish = "build/web"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build.environment]
+  FLUTTER_WEB_CANVASKIT_URL = "https://unpkg.com/canvaskit-wasm@0.33.0/bin/"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "*.@(js|css|html|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
