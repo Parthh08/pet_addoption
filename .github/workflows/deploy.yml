@@ -31,7 +31,7 @@ jobs:
       run: flutter test
       
     - name: 🔨 Build Web App
-      run: flutter build web --release --base-href "/pet-adoption-app/"
+      run: flutter build web --release --base-href "/pet_addoption/"
       
     - name: 🚀 Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
@@ -44,4 +44,4 @@ jobs:
     - name: 📊 Deployment Summary
       run: |
         echo "🎉 Pet Adoption App deployed successfully!"
-        echo "🌐 Live URL: https://${{ github.repository_owner }}.github.io/pet-adoption-app/"
+        echo "🌐 Live URL: https://${{ github.repository_owner }}.github.io/pet_addoption/"
