@@ -5,7 +5,7 @@ A beautiful and feature-rich pet adoption app built with Flutter that allows use
 ## 🌐 **LIVE DEMO**
 **🎉 App is now deployed and live!** Try it out at your deployed URL.
 
-[![Deploy Status](spectacular-muffin-e834bb.netlify.app)
+[![Deploy Status]((spectacular-muffin-e834bb.netlify.app))
 [![Flutter](https://img.shields.io/badge/Flutter-3.19.0-blue.svg)](https://flutter.dev/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
