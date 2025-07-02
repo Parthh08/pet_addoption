@@ -7,7 +7,7 @@ A feature-rich pet adoption app built with Flutter that allows users to browse, 
 
 [![Deploy Status]-Netlify (https://spectacular-muffin-e834bb.netlify.app/)
                  -Firebase (https://pet-adoption-1bbad.web.app)
-                 -Github (https://parthh08.github.io/pet_adoption/)
+                
 
 [![Flutter](https://img.shields.io/badge/Flutter-3.19.0-blue.svg)](https://flutter.dev/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
