@@ -224,39 +224,3 @@ Each BLoC follows the principles of:
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🤝 Contributing
-
-Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
-
-## 📞 Support
-
-If you have any questions or need help, please:
-1. Check the [Issues](../../issues) page
-2. Create a new issue with detailed information
-3. Contact the development team
-
-## 🙏 Acknowledgments
-
-- **Cat API** and **Dog API** for providing pet data
-- **Flutter Community** for excellent packages and resources
-- **Material Design** for design inspiration
-- **Contributors** who helped improve this project
-
----
-
-**Made with ❤️ and Flutter** 🐾
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
