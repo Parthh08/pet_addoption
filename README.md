@@ -1,6 +1,6 @@
 # Pet Adoption App 🐾
 
-A beautiful and feature-rich pet adoption app built with Flutter that allows users to browse, search, favorite, and adopt pets. The app follows clean architecture principles and implements modern Flutter development practices.
+A feature-rich pet adoption app built with Flutter that allows users to browse, search, favorite, and adopt pets. The app follows clean architecture principles and implements modern Flutter development practices.
 
 ## 🌐 **LIVE DEMO**
 **🎉 App is now deployed and live!** Try it out at your deployed URL.
